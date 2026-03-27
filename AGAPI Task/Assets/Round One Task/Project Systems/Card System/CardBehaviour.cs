@@ -13,7 +13,7 @@ namespace RoundOne
         public int CardID { get; private set; }
         public bool IsFlipped { get; private set; }
 
-      
+
         public static event Action<CardBehaviour> OnCardClicked;
 
         public void Initialize(int id, Color color)
@@ -23,10 +23,11 @@ namespace RoundOne
             ShowBack();
         }
 
-        public void OnClick() 
+        public void OnClick()
         {
-            if (IsFlipped) return; 
 
+            if (IsFlipped) return;
+            Flip(true);
             OnCardClicked?.Invoke(this);
         }
 
@@ -34,7 +35,7 @@ namespace RoundOne
         {
             IsFlipped = showFront;
             backLayer.SetActive(!showFront);
-        
+
         }
 
         private void ShowBack()
